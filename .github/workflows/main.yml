@@ -1,8 +1,15 @@
-name: docker check
-on: push
+name: Docker Workflow
+on:
+  push: 
 jobs:
-  my-job:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: docker --version
+    - name: Checkout Repository
+      uses: actions/checkout@v2 
+    - name: Build and Run Docker Containers
+      shell: bash
+      run: |
+        docker build -t hello .
+        docker run --rm hello
+      working-directory: ./
