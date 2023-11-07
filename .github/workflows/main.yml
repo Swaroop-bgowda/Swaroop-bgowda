@@ -1,8 +1,6 @@
 name: Docker Workflow
 on:
   workflow_dispatch: 
-env:
-  DATA: ${{ secrets.DATA }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,6 +11,6 @@ jobs:
       shell: bash
       run: |
         echo $DATA
-        docker build --build-arg DATA=$DATA -t hello .
+        docker build --build-arg DATA=${{ secrets.DATA }} -t hello .
         docker run --rm hello
       working-directory: ./
