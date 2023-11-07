@@ -12,6 +12,7 @@ jobs:
     - name: Build and Run Docker Containers
       shell: bash
       run: |
+        echo $DATA
         docker build --build-arg DATA=$DATA -t hello .
         docker run --rm hello
       working-directory: ./
