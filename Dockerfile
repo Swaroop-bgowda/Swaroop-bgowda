@@ -1,5 +1,5 @@
 ARG DATA
 FROM alpine
 ENV DATA=$DATA
-RUN echo "The value of MY_VARIABLE is $DATA"
+RUN echo $DATA
 CMD ["echo", "Hello StackOverflow!"]
